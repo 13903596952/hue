@@ -323,7 +323,7 @@ ${ commonheader(_('Search Indexes'), "indexer", user, request, "90px") | n,unico
       </tr>
     </thead>
     <tbody data-bind="foreach: collection.fields">
-      <tr data-bind="css: {'error': name.errors().length > 0}" class="editable">
+      <tr data-bind="css: {'error': name.errors().length > 0}">
         <td data-bind="editableText: name">
           <span class="pull-left fa fa-pencil"></span>
         </td>

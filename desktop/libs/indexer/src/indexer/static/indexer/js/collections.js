@@ -255,7 +255,7 @@ var CreateCollectionViewModel = function() {
           'quote': self.fieldQuoteCharacter()
         }).done(function(data) {
           if (data.status == 0) {
-            window.location.href = '/indexer';
+            window.location.href = '/hue/indexer/#edit/' + collection.name; // No refresh otherwise currently in Hue 4
           } else {
             self.isLoading(false);
             $(document).trigger("error", data.message);
@@ -274,7 +274,11 @@ var CreateCollectionViewModel = function() {
           'source': self.source()
         }).done(function(data) {
           if (data.status == 0) {
-            window.location.href = '/indexer';
+            if (IS_HUE_4) {
+              huePubSub.publish('open.link', '/hue/indexer'); 
+            } else {
+              window.location.href = '/indexer';
+            }
           } else {
             $(document).trigger("error", data.message);
           }
